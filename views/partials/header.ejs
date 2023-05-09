@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Journal</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbarHeader">
+            <a href="/"><img src="/blog.png" alt="Blog Icon" id="icon"></a>
+            <p>DAILY JOURNAL</p>
+        </div>
+        <ul class="navMenu">
+            <!-- <li class="navbarItems"><a href="/posts">Post</a></li> -->
+            <li class="navbarItems"><a class="navLink"href="/compose">New</a></li>
+            <li class="navbarItems"><a class="navLink"href="/">Home</a></li>
+            <li class="navbarItems"><a class="navLink"href="/about">About</a></li>
+            <li class="navbarItems"><a class="navLink"href="/contact">Contact Us</a></li>
+        </ul>
+        <div class="burger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+</nav>    
+<script>
+    const burger = document.querySelector(".burger");
+    const navMenu = document.querySelector(".navMenu");
+    burger.addEventListener("click",()=>{
+        burger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    });
+    document.querySelectorAll(".navLink").forEach(ele=>{
+        ele.addEventListener("click",(n)=>{
+            burger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+    });
+</script>
+
+    

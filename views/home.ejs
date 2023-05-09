@@ -1,0 +1,30 @@
+<%- include("partials/header");%>
+
+    <div class="home">
+        <div class="homeBox">
+        <h1>Home Page </h1>
+        <p>
+            <%= homeLorem %>
+        </p>
+        </div>
+        <%for(var i=0;i<texts.length;i++){%>
+            <div class="hRule"></div>
+            <div class="homeBox">
+            <form action="/delete" method="post">
+                <h1>
+                    <%= texts[i].name %>
+                </h1>
+                <p>
+                    <%= texts[i].text.substring(0,100) %>
+                        <span>
+                        <a href="/posts/<%= texts[i]._id %>">
+                            <span>...
+                            </span></a><button id="delete" type="submit" name="deletePost"
+                            value="<%= texts[i]._id %>"><span class="material-symbols-outlined">delete</span></button>
+                        </span>    
+                </p>
+            </form>
+            </div>
+            <%}%>
+    </div>
+    <%- include("partials/footer");%>
