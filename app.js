@@ -4,13 +4,25 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
 
-const port = 80;
+require('dotenv').config();
+
+const port = process.env.PORT || 80;
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.set("view engine","ejs");
+
+// mongoose.connect("mongodb://127.0.0.1:27017/blogsDB");
+
 mongoose.set("strictQuery",true);
-mongoose.connect("mongodb://127.0.0.1:27017/blogsDB");
+mongoose.connect(process.env.DBURL,{ 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+    },(err)=>{
+        err ? console.log("Error in Connection" + err) : console.log("SuccessFully Connected with DB");
+    }
+);
+
 
 const homeContent = "=>HOME CONTENT<=Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem veritatis ducimus alias cumque quibusdam perspiciatis possimus facilis ipsum mollitia iste doloribus quaerat ea reiciendis illum unde fuga maiores ab, laborum tempore culpa excepturi" ;
 const aboutContent = "=>ABOUT CONTENT<=Lorem ipsum dolor sit amet consectetur adipisicing elit. Est placeat ea facilis ad eius doloremque, expedita delectus voluptates, consequatur consectetur dolor vitae corporis mollitia dolores quos maxime, atque laboriosam.";
@@ -62,6 +74,10 @@ app.get("/posts/:topic",(req,res)=>{
         }
     })
 });
+
+app.get("/test",(req,res)=>{
+    res.json({'Test':'App'});
+})
 
 app.post("/delete",(req,res)=>{
     const deletePost = req.body.deletePost
