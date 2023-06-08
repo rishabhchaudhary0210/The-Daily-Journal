@@ -11,7 +11,7 @@ const port = process.env.PORT || 80;
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
-app.set("views", '/views');
+// app.set("views", '/views');
 app.set("view engine","ejs");
 
 // mongoose.connect("mongodb://127.0.0.1:27017/blogsDB");
@@ -51,7 +51,7 @@ app.get("/",(req,res)=>{
             res.render("home",{homeLorem:homeContent, texts:items});
         }else{
             console.log(err);
-            res.send(err);
+            // res.send(err);
         }
     });
 });
