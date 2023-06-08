@@ -49,6 +49,7 @@ app.get("/",(req,res)=>{
             res.render("home",{homeLorem:homeContent, texts:items});
         }else{
             console.log(err);
+            res.send(err);
         }
     });
 });
