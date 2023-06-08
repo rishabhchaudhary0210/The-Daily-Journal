@@ -41,6 +41,8 @@ app.get("/",(req,res)=>{
         if(!err){
             // console.log(items);
             res.render("home",{homeLorem:homeContent, texts:items});
+        }else{
+            console.log(err);
         }
     });
 });
