@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
+const path = require("path");
 
 require('dotenv').config();
 
@@ -10,6 +11,7 @@ const port = process.env.PORT || 80;
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
+app.set("views", path.join(__dirname, '/views'));
 app.set("view engine","ejs");
 
 // mongoose.connect("mongodb://127.0.0.1:27017/blogsDB");
