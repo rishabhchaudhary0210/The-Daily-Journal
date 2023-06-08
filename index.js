@@ -17,12 +17,18 @@ app.set("view engine","ejs");
 // mongoose.connect("mongodb://127.0.0.1:27017/blogsDB");
 
 mongoose.set("strictQuery",true);
-mongoose.connect(process.env.DBURL,{ 
+mongoose.connect('mongodb+srv://rishabhcs2809:qwerty123@cluster0.elbxoo8.mongodb.net/?retryWrites=true&w=majority',{ 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
     },(err)=>{
         err ? console.log("Error in Connection" + err) : console.log("SuccessFully Connected with DB");
     }
+// mongoose.connect(process.env.DBURL,{ 
+//     useNewUrlParser: true, 
+//     useUnifiedTopology: true 
+//     },(err)=>{
+//         err ? console.log("Error in Connection" + err) : console.log("SuccessFully Connected with DB");
+//     }
 );
 
 
