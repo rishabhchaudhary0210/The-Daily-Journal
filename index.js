@@ -15,24 +15,15 @@ app.set("views", path.join(__dirname,'/views'));
 app.set("view engine","ejs");
 
 // mongoose.connect("mongodb://127.0.0.1:27017/blogsDB");
-const dburl = 'mongodb+srv://rishabhcs2809:qwerty123@cluster0.elbxoo8.mongodb.net/?retryWrites=true&w=majority';
-
 mongoose.set("strictQuery",true);
-mongoose.connect(dburl,{ 
+
+mongoose.connect(process.env.DBURL,{ 
     useNewUrlParser: true, 
     useUnifiedTopology: true 
     },(err)=>{
         err ? console.log("Error in Connection" + err) : console.log("SuccessFully Connected with DB");
     }
 );
-// mongoose.connect(process.env.DBURL,{ 
-//     useNewUrlParser: true, 
-//     useUnifiedTopology: true 
-//     },(err)=>{
-//         err ? console.log("Error in Connection" + err) : console.log("SuccessFully Connected with DB");
-//     }
-// );
-
 
 const homeContent = "=>HOME CONTENT<=Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem veritatis ducimus alias cumque quibusdam perspiciatis possimus facilis ipsum mollitia iste doloribus quaerat ea reiciendis illum unde fuga maiores ab, laborum tempore culpa excepturi" ;
 const aboutContent = "=>ABOUT CONTENT<=Lorem ipsum dolor sit amet consectetur adipisicing elit. Est placeat ea facilis ad eius doloremque, expedita delectus voluptates, consequatur consectetur dolor vitae corporis mollitia dolores quos maxime, atque laboriosam.";
