@@ -1,0 +1,17 @@
+<%- include("partials/header");%>
+
+<div class="update compose">
+    <h1>Update Post</h1>
+    <form action="/update" method="post">
+            <div>
+                <label for="newTitle">Title: </label>
+                <input type="text" name="newTitle" value="<%= postTitle %>" placeholder="Enter title here..." required>
+                <label for="newPost">Post: </label>
+                <textarea name="newPost" cols="120" rows="15" placeholder="Enter text here..."><%= postText %>
+                </textarea>
+            </div>
+            <button name="updatePost" value="<%= postId %>" type="submit">Update</button>
+    </form>
+</div>
+
+<%- include("partials/footer");%>

@@ -14,7 +14,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname,'/views'));
 app.set("view engine","ejs");
 
-// mongoose.connect("mongodb://127.0.0.1:27017/blogsDB");
 mongoose.set("strictQuery",true);
 
 mongoose.connect(process.env.DBURL,{ 
@@ -79,12 +78,33 @@ app.get("/posts/:topic",(req,res)=>{
     })
 });
 
+app.get("/edit/:topic",(req,res)=>{
+    Post.findOne({_id:(req.params.topic)},(err,result)=>{
+        if(!err){
+            if(result){
+                // console.log(result);
+                console.log("Match Found!");
+                res.render("edit",{postId:result._id, postTitle:result.name, postText:result.text});
+            }
+        }
+    })
+});
+
+app.post("/update",(req,res)=>{
+    Post.findByIdAndUpdate({_id:req.body.updatePost}, {name:req.body.newTitle, text:req.body.newPost},(err)=>{
+        if(!err){
+            console.log("SuccessFully Updated");
+            res.redirect("/");
+        }
+    })
+})
+
 app.get("/test",(req,res)=>{
     res.json({'Test':'App'});
 })
 
 app.post("/delete",(req,res)=>{
-    const deletePost = req.body.deletePost
+    const deletePost = req.body.deletePost;
     Post.deleteOne({_id:deletePost},(err)=>{
         if(!err){
             console.log("Successfully Removed Post");
