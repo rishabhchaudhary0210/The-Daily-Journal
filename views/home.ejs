@@ -14,21 +14,23 @@
                     <h1>
                         <%= texts[i].name %>
                     </h1>
-                    <p>
-                        <%= texts[i].text.substring(0,100) %>
-                            <span>
-                                <a href="/posts/<%= texts[i]._id %>">
-                                    <span>...
-                                    </span>
-                                </a>
-                                <a href="/edit/<%= texts[i]._id %>">
-                                    <span class="material-symbols-outlined">edit</span>
-                                </a>
-                                <button id="delete" type="submit" name="deletePost" value="<%= texts[i]._id %>">
-                                    <span class="material-symbols-outlined">delete</span>
-                                </button>
-                            </span>
-                    </p>
+                    <div>
+                        <p>
+                            <%= texts[i].text.substring(0,80) %>
+                        </p>
+                        <span>
+                            <a href="/posts/<%= texts[i]._id %>">
+                                <span>...
+                                </span>
+                            </a>
+                            <a href="/edit/<%= texts[i]._id %>">
+                                <span class="material-symbols-outlined">edit</span>
+                            </a>
+                            <button id="delete" type="submit" name="deletePost" value="<%= texts[i]._id %>">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </span>
+                    </div>
                 </form>
             </div>
             <%}%>

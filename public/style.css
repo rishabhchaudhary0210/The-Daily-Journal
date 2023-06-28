@@ -20,13 +20,15 @@
     color: var(--yellow-back);
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 10px;
     background-color: var(--yellow-back);
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background-color: var(--purple-acc);
 }
+
 body {
     background-color: var(--yellow-back);
 }
@@ -35,7 +37,8 @@ body {
 .navbar {
     background-color: var(--yellow-dark);
     color: var(--purple-back);
-    height: 5.7rem;
+    padding: 0 10px;
+    height: 100px;
     width: 100%;
     position: sticky;
     top: 0;
@@ -50,10 +53,11 @@ body {
 }
 
 .navbarHeader {
-    font-size: 2.2rem;
-    margin-top: 0.5rem;
     display: flex;
-    padding: 0.8rem 0.4rem;
+}
+
+.navbarHeader p {
+    font-size: 2.2rem;
 }
 
 #icon {
@@ -105,17 +109,13 @@ body {
 .navbar .burger {
     display: none;
 }
-.navbar .burger .menu, .navbar .burger .close{
-    display: none;
-}
 
 /* NAVBAR ENDS */
 
 /* Footer */
 footer {
-    /* background-color: rgba(51, 51, 51, 0.781); */
     background-color: var(--purple-back);
-    height: 70px;
+    height: 90px;
     width: 100%;
     color: var(--grey-acc);
     font-family: 'Martian Mono', monospace;
@@ -124,7 +124,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 /* Footer Ends */
@@ -133,7 +132,8 @@ footer {
 .home {
     margin: 10px 75px;
     padding: 25px;
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
+    min-height: 100vh;
 }
 
 .home .homeBox {
@@ -165,18 +165,28 @@ footer {
     font-weight: lighter;
     margin: 10px 0px;
     font-size: 1.1rem;
+    flex: 2;
+}
+
+.homeBox div {
     display: flex;
     justify-content: space-between;
 }
 
-.home p a {
-    margin: 0;
-    margin-left: 1rem;
-    font-size: 1.5rem;
+.homeBox div span {
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.homeBox div a {
     text-decoration: none;
     font-weight: bold;
     color: var(--grey-text);
     font-family: 'Rubik', sans-serif;
+    overflow: hidden;
 }
 
 /* Home Section */
@@ -184,7 +194,7 @@ footer {
 /* Compose Page */
 .compose {
     margin: 0 100px;
-    height:90vh;
+    height: 90vh;
     padding: 20px 0;
 }
 
@@ -199,9 +209,11 @@ footer {
     display: flex;
     align-items: center;
 }
-.compose form div{
+
+.compose form div {
     width: 70%;
 }
+
 .compose textarea,
 .compose input {
     height: 250px;
@@ -229,7 +241,7 @@ footer {
     font-size: 1.8rem;
     font-family: 'Kanit', sans-serif;
     color: var(--purple-back);
-    display: block; 
+    display: block;
 }
 
 .compose button {
@@ -250,7 +262,8 @@ footer {
     background-color: white;
     border-color: var(--purple-back);
 }
-.compose button:active{
+
+.compose button:active {
     outline: 2px solid var(--purple-acc);
     outline-offset: 2px;
 }
@@ -262,62 +275,178 @@ footer {
     background-color: rgba(0, 0, 0, 0);
     border: none;
     cursor: pointer;
-    margin-left: 0.5vw;
 }
 
 
 
 @media screen and (max-width:1050px) {
-    .home{
+    .home {
         margin: 10px 35px;
     }
-    .home p{
+
+    .home p {
         font-size: 1rem;
     }
+
+    .compose {
+        margin: 0 50px;
+    }
 }
+
 @media screen and (max-width:900px) {
-    .navbar .burger{
-        display:block;
+    html {
+        font-size: 90%;
     }
-    .burger .menu {
-        display: block;
+
+    .navbar {
+        padding: 0 10px;
     }
-    .burger .menu.active{
-        display: none;
-    }
-    .burger .close.active{
-        display: block;
-    }
+
     .navbar.active {
         height: 100vh;
         width: 100%;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 15px 5px;
+        padding: 15px 20px;
         transition: all 0.5s ease;
     }
+
     .navbarHeader {
+        position: absolute;
+        top: -15px;
+        left: 10px;
+    }
+
+    .navbarHeader p {
         font-size: 2rem;
-        /* margin-top: 0.5rem; */
-        display: flex;
-        padding: 0.8rem 0.4rem;
-        /* align-self: flex-start; */
+        margin: auto 0;
     }
-    .navbarHeader p{
-        margin: 2.5rem 0;
-    }
+
     #icon {
         height: 4.2rem;
         width: 3.8rem;
         margin: 30px 1rem;
     }
-    .navMenu{
+
+    .navbar .navMenu {
         display: none;
     }
-    .navMenu.active{
+
+    .navbar.active .navMenu {
+        display: flex;
         flex-direction: column;
         align-self: center;
-        
-    }   
+    }
+
+    .navbar .burger {
+        display: block;
+    }
+
+    .burger .menu {
+        font-size: 2rem;
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 35px;
+    }
+
+    .burger .close {
+        font-size: 2rem;
+        display: none;
+        position: absolute;
+        right: 15px;
+        top: 35px;
+    }
+
+    .burger .menu.active {
+        display: none;
+    }
+
+    .burger .close.active {
+        display: block;
+    }
+
+    .home {
+        margin: 10px 20px;
+        padding: 25px;
+    }
+
+    .compose form div {
+        width: 85%;
+    }
+
+    .compose button {
+        width: 170px;
+    }
+
+    .compose textarea,
+    .compose input {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .compose h1 {
+        text-align: center;
+    }
+
+    .compose form {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .compose textarea,
+    .compose input {
+        width: 100%;
+    }
+
+    .compose textarea {
+        height: 200px;
+    }
+
+    .compose button {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width:520px) {
+    html {
+        font-size: 80%;
+    }
+    #icon{
+        margin: 35px 1rem;
+        height: 3.8rem;
+        width: 3.4rem;
+    }
+    .navbarHeader p{
+        font-size: 1.8rem;
+    }
+    footer{
+        height: 70px;
+        font-size: 1.2rem;
+    }
+    .home {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .homeBox div span {
+        font-size: 1.5rem;
+        gap: 5px;
+    }
+
+    .home h1 {
+        font-size: 1.8rem;
+    }
+
+    .compose {
+        margin:0;
+    }
+
+    .compose textarea::placeholder,
+    .compose input::placeholder {
+        font-size: 1.2rem;
+    }
 }
