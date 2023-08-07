@@ -17,16 +17,18 @@
     --footer-text:var(--main-back);
 }
 .dark-mode{
-    /* --body-bg: #1F305E; */
-    --body-bg: #002244;
-    --body-bg: #4C516D;
-    --sec-back: #fff;
-    --text-color: #eee;
-    --main-back:#0C2340;
-    --box-shadow:2px 2px 7px gray;
+    --body-bg: #181a1e;
+    --sec-back: #edeffd;
+    --text-color: #a3bdcc;
+    --main-back: #202528;
+    --box-shadow:2px 5px 3rem rgb(0,0,0,0.4);
     --icon-filter:invert(1);
     --footer-clr:var(--main-back);
     --footer-text:var(--sec-back);
+    /* --body-bg: #1F305E; */
+    /* --body-bg: #002244;
+    --body-bg: #4C516D; */
+    /* --main-back:#0C2340; */
     /* --main-back: #1F305E; */
     /* --body-bg:#002244; */
     /* --main-back:#00416A; */
@@ -283,7 +285,7 @@ footer {
     margin-bottom: 10px;
     border: none;
     outline: none;
-    box-shadow: inset var(--box-shadow);
+    /* box-shadow: inset var(--box-shadow); */
     z-index: -1;
 }
 .compose div{
