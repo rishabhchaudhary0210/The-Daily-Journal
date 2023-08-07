@@ -4,10 +4,14 @@
         <h1>Compose</h1>
         <form action="/compose" method="post">
             <div>
-                <label for="newTitle">Title: </label>
-                <input type="text" name="newTitle" placeholder="Enter title here..." required>
-                <label for="newPost">Post: </label>
-                <textarea name="newPost" cols="120" rows="15" placeholder="Enter text here..."></textarea>
+                <div>
+                    <input type="text" name="newTitle" placeholder="Enter title here..." required>
+                    <label for="newTitle">Title: </label>
+                </div>
+                <div>
+                    <textarea name="newPost" cols="120" rows="15" placeholder="Enter text here..."></textarea>
+                    <label for="newPost">Post: </label>
+                </div>
             </div>
             <button type="submit">Publish</button>
         </form>

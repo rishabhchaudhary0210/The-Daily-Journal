@@ -7,36 +7,53 @@
 }
 
 :root {
-    --purple-back: #50394c;
-    --purple-acc: #5f475b;
-    --yellow-back: #fff5ee;
-    --yellow-dark: #fff5bb;
-    --grey-text: #7c757c;
-    --grey-acc: #b2b2b2;
+    --main-back: #fff;
+    --sec-back: #00308F;
+    --text-color: gray;
+    --body-bg:#f5f5f5;
+    --box-shadow:2px 2px 7px black;
+    --icon-filter:invert(0);
+    --footer-clr:var(--sec-back);
+    --footer-text:var(--main-back);
 }
-
+.dark-mode{
+    /* --body-bg: #1F305E; */
+    --body-bg: #002244;
+    --body-bg: #4C516D;
+    --sec-back: #fff;
+    --text-color: #eee;
+    --main-back:#0C2340;
+    --box-shadow:2px 2px 7px gray;
+    --icon-filter:invert(1);
+    --footer-clr:var(--main-back);
+    --footer-text:var(--sec-back);
+    /* --main-back: #1F305E; */
+    /* --body-bg:#002244; */
+    /* --main-back:#00416A; */
+    /* --main-back:#1E2952; */
+}
 ::selection {
-    background-color: var(--purple-acc);
-    color: var(--yellow-back);
+    background-color: var(--sec-back);
+    color: var(--text-color);
 }
 
 ::-webkit-scrollbar {
     width: 10px;
-    background-color: var(--yellow-back);
+    background-color: var(--body-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--purple-acc);
+    background-color: var(--sec-back);
 }
 
 body {
-    background-color: var(--yellow-back);
+    background-color: var(--body-bg);
 }
 
 /* NAVBAR SECTION */
 .navbar {
-    background-color: var(--yellow-dark);
-    color: var(--purple-back);
+    background-color: var(--main-back);
+    color: var(--sec-back);
     padding: 0 10px;
     height: 100px;
     width: 100%;
@@ -48,8 +65,9 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 15px 5px;
-    border-bottom: 3px solid rgb(87, 64, 6);
-    box-shadow: 1px 2px 5px var(--purple-acc);
+    /* border-bottom: 3px solid rgb(87, 64, 6); */
+    box-shadow: var(--box-shadow);
+    z-index: 10;
 }
 
 .navbarHeader {
@@ -64,6 +82,7 @@ body {
     height: 5rem;
     width: 4.8rem;
     margin: 30px 1rem;
+    filter: var(--icon-filter);
 }
 
 .navbarHeader p {
@@ -86,14 +105,14 @@ body {
 
 .navbar ul li a {
     text-decoration: none;
-    color: var(--purple-acc);
+    color: var(--sec-back);
     font-family: 'Martian Mono', monospace;
 }
 
 .navbar ul li a::before {
     height: 3px;
     content: '';
-    background-color: var(--purple-back);
+    background-color: var(--sec-back);
     width: 0;
     position: relative;
     top: 28px;
@@ -110,17 +129,45 @@ body {
     display: none;
 }
 
+#dark-toggle{
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    height: 50px;
+    width: 50px;
+    border: none;
+    background-color: var(--main-back);
+    border: 1px solid var(--sec-back);
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid;
+    place-items:center;
+}
+#dark-toggle span{
+    color: var(--sec-back);
+    font-size: 2rem;
+}
+#dark-toggle #dark-btn{
+    display: none;
+}
+#dark-toggle.active #dark-btn{
+    display: block;
+}
+#dark-toggle.active #light-btn{
+    display: none;
+}
+
 /* NAVBAR ENDS */
 
 /* Footer */
 footer {
-    background-color: var(--purple-back);
+    background-color: var(--footer-clr);
     height: 90px;
     width: 100%;
-    color: var(--grey-acc);
+    color: var(--footer-text);
     font-family: 'Martian Mono', monospace;
     font-size: 1.5rem;
-    border-top: 4px solid var(--grey-acc);
+    border-top: 4px solid var(--sec-back);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +177,7 @@ footer {
 
 /* HOME SECTION */
 .home {
-    margin: 10px 75px;
+    margin: 10px 50px;
     padding: 25px;
     padding-bottom: 0 !important;
     min-height: 100vh;
@@ -138,17 +185,23 @@ footer {
 
 .home .homeBox {
     margin: 18px 5px;
-    padding: 20px 18px;
+    padding: 35px 25px;
     border-radius: 7px;
+    background-color: var(--main-back);
+    box-shadow: var(--box-shadow);
+    transition: all 0.2s;
+    z-index: -1;
 }
 
 .home .homeBox:hover {
-    box-shadow: 1px 2px 5px var(--purple-back);
+    z-index: -1;
+    box-shadow: none;
+    transform: translate(2px,2px);
 }
 
 .home .hRule {
     width: 100%;
-    background-color: var(--purple-back);
+    background-color: var(--sec-back);
     height: 2px;
 }
 
@@ -156,11 +209,11 @@ footer {
     font-family: 'Kanit', sans-serif;
     font-weight: 500;
     font-size: 2rem;
-    color: var(--purple-back);
+    color: var(--sec-back);
 }
 
 .home p {
-    color: var(--grey-text);
+    color: var(--text-color);
     font-family: 'Rubik', sans-serif;
     font-weight: lighter;
     margin: 10px 0px;
@@ -184,9 +237,14 @@ footer {
 .homeBox div a {
     text-decoration: none;
     font-weight: bold;
-    color: var(--grey-text);
+    color: var(--text-color);
     font-family: 'Rubik', sans-serif;
     overflow: hidden;
+}
+
+.homeBox div button span{
+
+    color: var(--text-color);
 }
 
 /* Home Section */
@@ -200,7 +258,7 @@ footer {
 
 .compose h1 {
     font-size: 3rem;
-    color: var(--purple-back);
+    color: var(--sec-back);
     font-family: 'Kanit', sans-serif;
 }
 
@@ -218,30 +276,52 @@ footer {
 .compose input {
     height: 250px;
     width: 85%;
-    background-color: #ffffffd0;
+    background-color: var(--main-back);
     border-radius: 0.8vw;
     padding: 10px;
     font-size: 1.2rem;
     margin-bottom: 10px;
-
-    border: 1px double grey;
+    border: none;
     outline: none;
+    box-shadow: inset var(--box-shadow);
+    z-index: -1;
 }
-
+.compose div{
+    margin-top: 20px;
+}
 .compose input {
     height: 70px;
 }
-
+.compose form div div{
+    position: relative;
+    width: 100%;
+}
 .compose textarea::placeholder,
 .compose input::placeholder {
     font-size: 1rem;
+    visibility: hidden;
 }
-
+.compose textarea:focus,
+.compose input:focus {
+    border: 1px solid var(--sec-back);
+}
+.compose textarea:focus+label,
+.compose input:focus+label,
+.compose textarea:not(:placeholder-shown)~label,
+.compose input:not(:placeholder-shown)~label {
+    top: -38px;
+    left: 5px;
+}
 .compose label {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-family: 'Kanit', sans-serif;
-    color: var(--purple-back);
+    color: var(--sec-back);
     display: block;
+    position: absolute;
+    top: 13px;
+    left: 20px;
+    transition: all 0.2s linear;
+    z-index: 5;
 }
 
 .compose button {
@@ -249,22 +329,23 @@ footer {
     height: 70px;
     width: 200px;
     justify-self: flex-start;
-    color: white;
+    color: var(--main-back);
     font-size: 1.2rem;
     border-top-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    background-color: var(--purple-back);
+    background-color: var(--sec-back);
     cursor: pointer;
+    transition: all 0.2s ;
 }
 
 .compose button:hover {
-    color: var(--purple-back);
-    background-color: white;
-    border-color: var(--purple-back);
+    color: var(--sec-back);
+    background-color: var(--main-back);
+    border-color: var(--sec-back);
 }
 
 .compose button:active {
-    outline: 2px solid var(--purple-acc);
+    outline: 2px solid var(--sec-back);
     outline-offset: 2px;
 }
 

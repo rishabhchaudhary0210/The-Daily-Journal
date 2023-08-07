@@ -46,10 +46,8 @@ const Post = mongoose.model("Post", postSchema);
 app.get("/", (req, res) => {
     Post.find((err, items) => {
         if (!err) {
-            console.log(items);
             res.render("home", { homeLorem: homeContent, texts: items });
         } else {
-            console.log(process.env.DBURL);
             console.log(err);
             res.status(500).render("home",{homeLorem:"Error Connecting to DB"});
         }
@@ -82,7 +80,6 @@ app.get("/posts/:topic", (req, res) => {
     Post.findOne({ _id: (req.params.topic) }, (err, result) => {
         if (!err) {
             if (result) {
-                // console.log(result);
                 console.log("Match Found!");
                 res.render("post", { postTitle: result.name, postText: result.text });
             }
@@ -94,7 +91,6 @@ app.get("/edit/:topic", (req, res) => {
     Post.findOne({ _id: (req.params.topic) }, (err, result) => {
         if (!err) {
             if (result) {
-                // console.log(result);
                 console.log("Match Found!");
                 res.render("edit", { postId: result._id, postTitle: result.name, postText: result.text });
             }

@@ -13,3 +13,27 @@ closeBtn.addEventListener('click', () => {
     closeBtn.classList.toggle('active');
     menuBtn.classList.toggle('active');
 })
+
+const body = document.querySelector('body');
+const darkToggle = document.querySelector('#dark-toggle');
+
+darkToggle.addEventListener("click", ()=>{
+    window.location.reload();
+    if(localStorage.getItem('theme') == 'light'){
+        localStorage.setItem('theme', 'dark');
+    }else{
+        localStorage.setItem('theme','light');
+    }
+})
+
+window.addEventListener('load',()=>{
+    if(localStorage.getItem('theme') === '' || localStorage.getItem('theme') === 'light'){
+        body.classList.remove('dark-mode');
+        darkToggle.classList.remove('active');
+    }
+    else{
+        body.classList.add('dark-mode');
+        darkToggle.classList.add('active');
+    }
+
+})
