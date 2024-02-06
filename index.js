@@ -20,7 +20,8 @@ mongoose.set("strictQuery", true);
 try {
     mongoose.connect(process.env.DBURL, {
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        dbName: 'dailyjournal'
     },
     );
 } catch (err) {
