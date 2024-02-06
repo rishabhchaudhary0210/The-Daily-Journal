@@ -6,11 +6,13 @@ const mongoose = require("mongoose");
 const path = require("path");
 const Post = require("./model/postSchema.js");
 
+const morgan = require('morgan');
+
 require('dotenv').config();
 
 const port = process.env.PORT || 80;
 const app = express();
-
+app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, '/views'));
