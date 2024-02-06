@@ -1,12 +1,17 @@
 <%- include("partials/header");%>
 
     <div class="home">
-        <div class="homeBox">
-            <h1>DashBoard</h1>
+        <h1>DashBoard</h1>
+        <!-- <div class="homeBox">
             <p>
-                <!-- <%= homeLorem %> -->
             </p>
-        </div>
+        </div> -->
+        <%if(texts.length === 0){%>
+            <div class="homeBox">
+                <h1>Sorry! No posts found</h1>
+                <h1>Head over to compose to get started.</h1>
+            </div>
+        <%}%>
         <%for(var i=0;i<texts.length;i++){%>
             <div class="hRule"></div>
             <div class="homeBox">

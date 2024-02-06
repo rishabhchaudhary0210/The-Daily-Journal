@@ -39,16 +39,13 @@ mongoose.connection.once("open", () => {
     console.log("SuccessFully Connected TO the DB");
 })
 
-const homeContent = "=>HOME CONTENT<=Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem veritatis ducimus alias cumque quibusdam perspiciatis possimus facilis ipsum mollitia iste doloribus quaerat ea reiciendis illum unde fuga maiores ab, laborum tempore culpa excepturi";
-
-
 
 
 app.get("/", (req, res) => {
     console.log(req.cookies)
     Post.find((err, items) => {
         if (!err) {
-            res.render("home", { homeLorem: homeContent, texts: items });
+            res.render("home", {texts: items });
         } else {
             console.log(err);
             res.status(500).render("home", { homeLorem: "Error Connecting to DB" });

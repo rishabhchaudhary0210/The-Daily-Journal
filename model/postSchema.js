@@ -9,7 +9,7 @@ const postSchema = {
         type: String,
         require: true,
     },
-    user: {
+    userId: {
         type: String,
         require: true,
     }
