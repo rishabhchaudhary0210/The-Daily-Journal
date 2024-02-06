@@ -74,6 +74,18 @@ router.get('/log-out',(req, res)=>{
     return res.clearCookie('jwt').redirect("/");
 })
 
-
+router.get("/check-login", (req,res)=>{
+    const token = req.cookies.jwt;
+    // console.log("toke = ", token);
+    const checkToken = jwt.verify(token, process.env.JWT_SECRET, async (err, decoded)=>{
+        if(err){
+            // alert("Log-in required. Please login to proceed")
+            return res.json({error:"Not logged in"});
+        }
+        // return res.status(200).json({success:'User Logged In Successfully', user:decoded});
+        //login - success
+        return res.json({error : null});
+    });
+})
 
 module.exports = router;

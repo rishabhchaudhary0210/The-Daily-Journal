@@ -168,7 +168,7 @@ footer {
     width: 100%;
     color: var(--footer-text);
     font-family: 'Martian Mono', monospace;
-    font-size: 1.5rem;
+    font-size: 1rem;
     border-top: 4px solid var(--sec-back);
     display: flex;
     align-items: center;
@@ -235,6 +235,15 @@ footer {
     align-items: center;
     gap: 10px;
 }
+.homeBox .more-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.homeBox div span h6{
+    font-weight: 600;
+    font-size: 1rem;
+}
 
 .homeBox div a {
     text-decoration: none;
@@ -281,6 +290,7 @@ footer {
     height: 250px;
     width: 85%;
     background-color: var(--main-back);
+    color: var(--text-color);
     border-radius: 0.8vw;
     padding: 10px;
     font-size: 1.2rem;
@@ -298,7 +308,6 @@ footer {
 }
 .compose input , .signup input{
     height: 70px;
-    color: var(--text-color);
 }
 .compose form div div, .signup form div div{
     position: relative;

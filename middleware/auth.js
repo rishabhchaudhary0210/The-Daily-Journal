@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const isAuth =  (req, res, next)=>{
     const token = req.cookies.jwt;
-    console.log("toke = ", token);
+    // console.log("toke = ", token);
     const checkToken = jwt.verify(token, process.env.JWT_SECRET, async (err, decoded)=>{
         if(err){
             // alert("Log-in required. Please login to proceed")
@@ -11,6 +11,7 @@ const isAuth =  (req, res, next)=>{
         }
         // return res.status(200).json({success:'User Logged In Successfully', user:decoded});
         //login - success
+        console.log("data", jwt.decode(token));
         next()
     });
 }

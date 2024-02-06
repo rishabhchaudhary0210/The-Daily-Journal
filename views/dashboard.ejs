@@ -2,9 +2,9 @@
 
     <div class="home">
         <div class="homeBox">
-            <h1>Home Page </h1>
+            <h1>DashBoard</h1>
             <p>
-                Find the latest blogs from all genres written by users worldwide.
+                <!-- <%= homeLorem %> -->
             </p>
         </div>
         <%for(var i=0;i<texts.length;i++){%>
@@ -19,16 +19,16 @@
                             <%= texts[i].text.substring(0,80) %>
                         </p>
                         <span>
-                            <a href="/blog/posts/<%= texts[i]._id %>" class="more-link">
-                                <span>... <h6>read more</h6> 
+                            <a href="/blog/posts/<%= texts[i]._id %>">
+                                <span>...
                                 </span>
                             </a>
-                            <!-- <a href="/blog/edit/<%= texts[i]._id %>">
+                            <a href="/blog/edit/<%= texts[i]._id %>">
                                 <span class="material-symbols-outlined">edit</span>
                             </a>
                             <button id="delete" type="submit" name="deletePost" value="<%= texts[i]._id %>">
                                 <span class="material-symbols-outlined">delete</span>
-                            </button> -->
+                            </button>
                         </span>
                     </div>
                 </form>
