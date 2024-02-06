@@ -5,7 +5,7 @@ const _ = require("lodash");
 const mongoose = require("mongoose");
 const path = require("path");
 const Post = require("./model/postSchema.js");
-
+const cookieParser = require("cookie-parser");
 const morgan = require('morgan');
 
 require('dotenv').config();
@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, '/views'));
 app.set("view engine", "ejs");
+app.use(cookieParser());
+
 
 mongoose.set("strictQuery", true);
 try {
@@ -44,6 +46,7 @@ const homeContent = "=>HOME CONTENT<=Lorem, ipsum dolor sit amet consectetur adi
 
 
 app.get("/", (req, res) => {
+    console.log(req.cookies)
     Post.find((err, items) => {
         if (!err) {
             res.render("home", { homeLorem: homeContent, texts: items });

@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const dotenv = require('dotenv');
+dotenv.config();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -30,13 +32,13 @@ router.post('/sign-up', async (req, res) => {
             blogId: [],
         })
         const payload = { _id: user._id, name:user.name }
-        // const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
 
         console.log(user);
-        // console.log(token);
+        console.log(token);
         // res.cookie('jwt',token, {maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Signed Up Successfully', user:payload, token:token});
         //figure out jwt credentials
-        res.redirect("/");
+        res.cookie('jwt',token, {maxAge:3*24*60*60*1000,httpOnly:true}).redirect("/");
     }
     catch (err) {
         console.log(err);
@@ -57,10 +59,10 @@ router.post('/log-in', async (req, res) => {
         }
 
         //figure out jwt here
-        // const payload = {_id:user._id, name:user.name};
-        // const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
+        const payload = {_id:user._id, name:user.name};
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn:3*24*60*60 });
         // res.cookie('jwt',token,{maxAge:3*24*60*60*1000,httpOnly:true}).status(200).json({success:'Logged In Successfully', user:payload, token:token});
-        res.redirect("/");
+        res.cookie('jwt',token,{maxAge:3*24*60*60*1000,httpOnly:true}).redirect("/");
     }
     catch (err) {
         console.log(err);
@@ -69,8 +71,7 @@ router.post('/log-in', async (req, res) => {
 })
 
 router.get('/log-out',(req, res)=>{
-    res.clearCookie('jwt');
-    res.end();
+    return res.clearCookie('jwt').redirect("/");
 })
 
 
