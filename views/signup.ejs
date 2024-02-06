@@ -1,0 +1,43 @@
+<%- include("partials/header");%>
+
+    <div class="signup">
+        <h1>Sign-up</h1>
+        <form action="/user/sign-up" method="post">
+            <div>
+
+                <div>
+                    <input type="text" id="name" placeholder="Enter name here" name="name">
+                    <label for="name">Name: </label>
+                </div>
+                <div>
+                    <input type="email" name="email" id="email" placeholder="Enter email here">
+                    <label for="email">Email: </label>
+                </div>
+                <div class="password-container">
+                    <input type="password" name="password" id="password" placeholder="Enter password here">
+                    <label for="password">Password: </label>
+                    <span id="password-btn">
+                        Show
+                    </span>
+                </div>
+            </div>
+            <div class="error-msg">
+                <p>
+                    <%= errorMsg%>
+                </p>
+            </div>
+            <button type="submit">
+                Sign Up
+            </button>
+            <div class="link-container">
+                <p>
+                    Already have an account ? 
+                </p>
+                <a href="/user/log-in">Log-in</a>
+            </div>
+        </form>
+    </div>
+
+
+
+    <%- include("partials/footer");%>
