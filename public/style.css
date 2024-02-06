@@ -207,7 +207,7 @@ footer {
     height: 2px;
 }
 
-.home h1 {
+.home h1{
     font-family: 'Kanit', sans-serif;
     font-weight: 500;
     font-size: 2rem;
@@ -252,13 +252,13 @@ footer {
 /* Home Section */
 
 /* Compose Page */
-.compose {
+.compose, .signup {
     margin: 0 100px;
-    height: 90vh;
+    min-height: 90vh;
     padding: 20px 0;
 }
 
-.compose h1 {
+.compose h1, .signup h1{
     font-size: 3rem;
     color: var(--sec-back);
     font-family: 'Kanit', sans-serif;
@@ -270,12 +270,14 @@ footer {
     align-items: center;
 }
 
-.compose form div {
-    width: 70%;
+.compose form div, .signup form div {
+    width: 100%;
 }
-
+.signup form div {
+    margin-top: 25px;
+}
 .compose textarea,
-.compose input {
+.compose input, .signup input {
     height: 250px;
     width: 85%;
     background-color: var(--main-back);
@@ -288,34 +290,39 @@ footer {
     /* box-shadow: inset var(--box-shadow); */
     z-index: -1;
 }
-.compose div{
+.signup input{
+    width: 100%;
+}
+.compose div, .signup div{
     margin-top: 20px;
 }
-.compose input {
+.compose input , .signup input{
     height: 70px;
+    color: var(--text-color);
 }
-.compose form div div{
+.compose form div div, .signup form div div{
     position: relative;
     width: 100%;
 }
 .compose textarea::placeholder,
-.compose input::placeholder {
+.compose input::placeholder, .signup input::placeholder {
     font-size: 1rem;
     visibility: hidden;
 }
 .compose textarea:focus,
-.compose input:focus {
+.compose input:focus, .signup input:focus {
     border: 1px solid var(--sec-back);
 }
 .compose textarea:focus+label,
 .compose input:focus+label,
 .compose textarea:not(:placeholder-shown)~label,
-.compose input:not(:placeholder-shown)~label {
-    top: -38px;
+.compose input:not(:placeholder-shown)~label, .signup input:focus+label,
+.signup input:not(:placeholder-shown)~label {
+    top: -30px;
     left: 5px;
 }
-.compose label {
-    font-size: 1.7rem;
+.compose label, .signup label {
+    font-size: 1.5rem;
     font-family: 'Kanit', sans-serif;
     color: var(--sec-back);
     display: block;
@@ -326,9 +333,9 @@ footer {
     z-index: 5;
 }
 
-.compose button {
+.compose button, .signup button {
     display: block;
-    height: 70px;
+    height: 60px;
     width: 200px;
     justify-self: flex-start;
     color: var(--main-back);
@@ -339,18 +346,44 @@ footer {
     cursor: pointer;
     transition: all 0.2s ;
 }
-
-.compose button:hover {
+.signup button{
+    margin: 0 auto;
+}
+.compose button:hover, .signup button:hover {
     color: var(--sec-back);
     background-color: var(--main-back);
     border-color: var(--sec-back);
 }
 
-.compose button:active {
+.compose button:active, .signup button:active {
     outline: 2px solid var(--sec-back);
     outline-offset: 2px;
 }
-
+.signup #password-btn{
+    cursor: pointer;
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    color: var(--text-color);
+}
+.signup .error-msg{
+    margin: 5px auto;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgb(230, 22, 22);
+}
+.signup .link-container{
+    margin: 10px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+}
+.signup .link-container p{
+    color: var(--text-color);
+}
 /* Compose Ends */
 
 #delete {
@@ -360,7 +393,8 @@ footer {
     cursor: pointer;
 }
 
-
+/* Login Form start */
+/* Login Form ends */
 
 @media screen and (max-width:1050px) {
     .home {
@@ -371,7 +405,7 @@ footer {
         font-size: 1rem;
     }
 
-    .compose {
+    .compose, .signup {
         margin: 0 50px;
     }
 }
@@ -393,9 +427,12 @@ footer {
         justify-content: center;
         padding: 15px 20px;
         transition: all 0.5s ease;
+        z-index: 100;
+        /* position: absolute; */
     }
 
     .navbarHeader {
+        /* z-index: 100; */
         position: absolute;
         top: -15px;
         left: 10px;
@@ -455,33 +492,38 @@ footer {
         padding: 25px;
     }
 
-    .compose form div {
+    .compose form div{
         width: 85%;
     }
-
-    .compose button {
+    .signup form div {
+        width: 100%;
+    }
+    .compose button, .signup button {
         width: 170px;
     }
 
     .compose textarea,
-    .compose input {
+    .compose input{
         width: 90%;
+    }
+    .signup input{
+        width: 100%;
     }
 }
 
 @media screen and (max-width:700px) {
-    .compose h1 {
+    .compose h1, .signup h1 {
         text-align: center;
     }
 
-    .compose form {
+    .compose form, .signup form {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
     .compose textarea,
-    .compose input {
+    .compose input, .signup input {
         width: 100%;
     }
 
@@ -489,7 +531,7 @@ footer {
         height: 200px;
     }
 
-    .compose button {
+    .compose button, .signup button {
         margin-top: 10px;
     }
 }
@@ -527,9 +569,12 @@ footer {
     .compose {
         margin:0;
     }
+    .signup {
+        margin: 0 10px;
+    }
 
     .compose textarea::placeholder,
-    .compose input::placeholder {
+    .compose input::placeholder, .signup input::placeholder {
         font-size: 1.2rem;
     }
 }

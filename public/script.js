@@ -37,3 +37,25 @@ window.addEventListener('load',()=>{
     }
 
 })
+
+const passwordInput = document.getElementById("password");
+const passwordBtn=  document.getElementById("password-btn");
+
+passwordBtn.addEventListener("click", (e)=>{
+    e.stopPropagation()
+    console.log(passwordBtn.textContent);
+    console.log(passwordInput.type)
+    console.log("clicked")
+    if(passwordInput.type === "password"){
+        console.log("pass");
+        passwordInput.type = "text";
+        passwordInput.setAttribute("type", "text");
+        passwordBtn.textContent = "Hide";
+    }
+    else if(passwordInput.type === "text"){
+        console.log("text");
+        passwordInput.type = "password";
+        passwordInput.setAttribute("type", "password");
+        passwordBtn.textContent = "Show";
+    }
+})
